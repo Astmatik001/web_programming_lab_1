@@ -97,6 +97,7 @@ main {
     opacity: 1;
     visibility: visible;
 }
+
 .modal {
     background-color: black;
     border-radius: 40px;
@@ -104,6 +105,56 @@ main {
     max-width: 500px;
     max-height: 90vh;
     overflow-y: auto;
+}
+.modal-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem;
+    border-bottom: 1px solid #ba0bab;
+}
+.modal-close {
+    background: white;
+    border: none;
+    font-size: 1.337rem;
+    cursor: pointer;
+    color: #666666;
+    transition: color 0.67s;
+}
+.modal-close:hover {
+    color: black;
+}
+.modal-body {
+    padding: 1rem;
+}
+.cart-items {
+    margin: 1rem;
+}
+.cart-total {
+    text-align: right;
+    padding: 1rem;
+    font-size: 1.337rem;
+    color: #777000;
+}
+
+.modal-footer {
+    padding: 1rem;
+    border-top: 1px solid #666;
+}
+.checkout-button {
+    width: 100%;
+    background-color: darkgreen;
+    color: teal;
+    border: none;
+    padding: 1rem;
+    border-radius: 2px;
+    cursor: pointer;
+    font-size: 1.1rem;
+    transition: background-color 1.337s;
+}
+.checkout-button:hover {
+    background-color: green;
+}
 
 footer {
     background-color: #faa;
