@@ -7,7 +7,7 @@
 <body>
     <header class="header-container">
         <h1>ProduceBuyShop</h1>
-        <button class="cart-button">
+        <button class="cart-button" id="cartButton">
             Cart
         </button>
     </header>
@@ -116,8 +116,30 @@
             </div>
         </section>
     </main>
+
+    <div class="modal-overlay" id="cartModal">
+        <div class="modal">
+            <div class="modal-header">
+                <h2>Your Cart</h2>
+                <button class="modal-close" id="closeCartModal">&times;</button>
+            </div>
+            <div class="modal-body">
+                <section class="cart-items" id="cartItems">
+                    <p class="empty-cart">The Cart Is Empty</p>
+                </section>
+                <div class="cart-total">
+                    <strong>Total: <span id="cartTotal">0</span> &euro;</strong>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button class="checkout-button">Checkout</button>
+            </div>
+        </div>
+    </div>
+
+    <footer>
+        <p>&copy; 2026 ProduceBuyShop. No rights protected.</p>
+    </footer>
+    <script src="script.js" defer></script>
 </body>
-<footer>
-    <p>&copy; 2026 ProduceBuyShop. No rights protected.</p>
-</footer>
 </html>

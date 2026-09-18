@@ -77,6 +77,34 @@ main {
     box-shadow: 0 5px 5px #800813;
 }
 
+
+.modal-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(67, 67, 67, 0.67);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 123;
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 1.337s;
+}
+.modal-overlay.active {
+    opacity: 1;
+    visibility: visible;
+}
+.modal {
+    background-color: black;
+    border-radius: 40px;
+    width: 90%;
+    max-width: 500px;
+    max-height: 90vh;
+    overflow-y: auto;
+
 footer {
     background-color: #faa;
     color: white;
