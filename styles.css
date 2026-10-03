@@ -1,4 +1,4 @@
-* {
+﻿* {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
@@ -48,6 +48,16 @@ main {
     display: grid;
     grid-template-columns: repeat(4, 1fr);
     gap: 1.337rem;
+}
+
+@media (max-width: 1100px) {
+    .produce-grid { grid-template-columns: repeat(3, 1fr); }
+}
+@media (max-width: 800px) {
+    .produce-grid { grid-template-columns: repeat(2, 1fr); }
+}
+@media (max-width: 600px) {
+    .produce-grid { grid-template-columns: 1fr; }
 }
 
 .product-card {
@@ -267,4 +277,11 @@ footer {
 
 .remove-button:hover {
     background-color: #cc0000;
+}
+
+footer {
+    background-color: #faa;
+    color: white;
+    text-align: center;
+    padding: 1rem;
 }
