@@ -7,6 +7,11 @@ const cartTotal = document.getElementById("cartTotal")
 const closeCartButton = document.getElementById("closeCartButton")
 const addToCartButtons = document.querySelectorAll('.add-to-cart-button');
 
+const checkoutButton = document.getElementById('checkoutButton');
+const orderModal = document.getElementById('orderModal');
+const closeOrderModal = document.getElementById('closeOrderModal');
+const orderForm = document.getElementById('orderForm');
+const orderSuccess = document.getElementById('orderSuccess');
 
 document.addEventListener('DOMContentLoaded', function() {
     loadCart();
@@ -80,7 +85,6 @@ function addToCart(id, name, price) {
     
     saveCart();
     updateCartCount();
-    showAddedMessage(name);
 }
 
 function removeFromCart(id) {
@@ -119,3 +123,68 @@ function loadCart() {
         cart = JSON.parse(savedCart);
     }
 }
+
+checkoutButton.addEventListener('click', function() {
+        if (cart.length === 0) {
+            alert('Cart is empty!');
+            return;
+        }
+        cartModal.classList.remove('active');
+        orderModal.classList.add('active');
+    });
+
+closeOrderModal.addEventListener('click', function() {
+        orderModal.classList.remove('active');
+        orderForm.style.display = 'block';
+        orderSuccess.style.display = 'none';
+        orderForm.reset();
+    });
+    
+orderModal.addEventListener('click', function(e) {
+        if (e.target === orderModal) {
+            orderModal.classList.remove('active');
+            orderForm.style.display = 'block';
+            orderSuccess.style.display = 'none';
+            orderForm.reset();
+        }
+    });
+
+orderForm.addEventListener('submit', function(e) {
+        e.preventDefault();
+        
+        // Get form values
+        const firstName = document.getElementById('firstName').value.trim();
+        const lastName = document.getElementById('lastName').value.trim();
+        const address = document.getElementById('address').value.trim();
+        const phone = document.getElementById('phone').value.trim();
+        
+        // Validate form
+        if (!firstName || !lastName || !address || !phone) {
+            alert('Пожалуйста, заполните все поля!');
+            return;
+        }
+        
+        // Validate phone format (basic validation)
+        const phoneRegex = /^[\d\+\-\(\)\s]+$/;
+        if (!phoneRegex.test(phone)) {
+            alert('Please input a correct phone number!');
+            return;
+        }
+        
+        // Show success message
+        orderForm.style.display = 'none';
+        orderSuccess.style.display = 'block';
+        
+        // Clear cart
+        cart = [];
+        saveCart();
+        updateCartCount();
+        
+        // Close modal after 2 seconds
+        setTimeout(function() {
+            orderModal.classList.remove('active');
+            orderForm.style.display = 'block';
+            orderSuccess.style.display = 'none';
+            orderForm.reset();
+        }, 2000);
+    });
